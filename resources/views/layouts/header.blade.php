@@ -1,36 +1,22 @@
 @if (Route::has('login'))
-    <header class="p-4 bg-gradient-to-r from-indigo-700 to-purple-700 text-white">
-        <div class="flex justify-between">
-            <div class="sm:hidden dropdown">
-                <button class="btn btn-square btn-ghost">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-                <ul tabindex="0"
-                    class="text-slate-800 menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-lg w-52">
-                    <li><a>Homepage</a></li>
-                    <li><a>Portfolio</a></li>
-                    <li><a>About</a></li>
-                </ul>
-            </div>
-            <div class="hidden sm:block">
-                <a href="{{ url('/') }}">
-                    <img src="{{ @asset('/img/logo.svg') }}" alt="">
-                </a>
-            </div>
-            <div>
+    <!-- header -->
+    <header class="py-2 bg-white text-slate-900 dark:bg-indigo-700 dark:text-white dar">
+        <div class="container px-4 mx-auto flex justify-between items-center">
+            <button class="block dark:hidden">
+                <img src="{{ @asset('/img/logo_2.svg') }}" alt="logo">
+            </button>
+            <a href="/" class="hidden dark:block">
+                <img src="{{ @asset('/img/logo.svg') }}" alt="logo">
+            </a>
+            <div class="space-x-2 capitalize">
                 @auth
-                    <a href="{{ url('/dashboard') }}"
-                       class="btn btn-ghost">Dashboard</a>
+                    <a class="hover:bg-slate-200 dark:hover:bg-indigo-800 p-3 rounded" href="{{ url('/dashboard') }}">dashboard</a>
                 @else
-                    <a href="{{ route('login') }}" class="btn btn-ghost">Log in</a>
-
+                    <a class="hover:bg-slate-200 dark:hover:bg-indigo-800 p-3 rounded" href="{{ route('login') }}">log
+                        in</a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                           class="btn btn-ghost">Register</a>
+                        <a class="hover:bg-slate-200 dark:hover:bg-indigo-800 p-3 rounded"
+                           href="{{ route('register') }}">register</a>
                     @endif
                 @endauth
             </div>
