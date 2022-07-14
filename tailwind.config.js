@@ -6,6 +6,7 @@ module.exports = {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './src/**/*.{vue,js,ts,jsx,tsx}',
     ],
     darkMode: 'class',
     theme: {
@@ -14,6 +15,11 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
         },
+        container: {
+            screens: {
+                DEFAULT: '1280px',
+            }
+        }
     },
 
     plugins: [
