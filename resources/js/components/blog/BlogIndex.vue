@@ -1,5 +1,18 @@
 <script setup>
+// Import Swiper Vue.js components
+import {Navigation} from 'swiper';
+import {Swiper, SwiperSlide} from 'swiper/vue';
 import BlogItemEditorPick from './BlogItemEditorPick.vue'
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+const onSwiper = Swiper;
+const onSlideChange = SwiperSlide;
+const modules = [Navigation];
+
+
 </script>
 
 <template>
@@ -18,10 +31,25 @@ import BlogItemEditorPick from './BlogItemEditorPick.vue'
                     Discover the most outstanding articles in all topics of life.
                 </p>
             </div>
-            <div>
+            <swiper
+                :slides-per-view="1"
+                :space-between="50"
+                :modules="modules"
+                :navigation="true"
+                @swiper="onSwiper"
+                @slideChange="onSlideChange"
+            >
                 <!-- editor's pick item -->
-                <BlogItemEditorPick/>
-            </div>
+                <swiper-slide>
+                    <BlogItemEditorPick/>
+                </swiper-slide>
+                <swiper-slide>
+                    <BlogItemEditorPick/>
+                </swiper-slide>
+                <swiper-slide>
+                    <BlogItemEditorPick/>
+                </swiper-slide>
+            </swiper>
         </section>
     </div>
 </template>
