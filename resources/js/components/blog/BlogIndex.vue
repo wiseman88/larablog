@@ -12,6 +12,44 @@ const onSwiper = Swiper;
 const onSlideChange = SwiperSlide;
 const modules = [Navigation];
 
+defineProps({
+    posts: Object,
+})
+const posts = [
+    {
+        title: 'Post number 1',
+        author_name: 'John J. Keeshan',
+        author_avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+        created_at: '26.7.2022',
+        likes: 51,
+        comments: 12,
+        categories: ['programming', 'lifestyle', 'nature'],
+        main_image: 'https://images.unsplash.com/photo-1432889490240-84df33d47091?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80'
+    },
+    {
+        title: 'Post number 2',
+        author_name: 'Jane J. Keeshan',
+        author_avatar: 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+        created_at: '26.8.2022',
+        likes: 15,
+        comments: 21,
+        categories: ['nature', 'water', 'ocean'],
+        main_image: 'https://images.unsplash.com/photo-1507295386538-ddd5e86cd597?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80'
+    },
+    {
+        title: 'Post number 3',
+        author_name: 'Jared J. Keeshan',
+        author_avatar: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+        created_at: '12.8.2022',
+        likes: 1,
+        comments: 102,
+        categories: ['forest', 'nature'],
+        main_image: 'https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80'
+    }
+]
+
+console.log(posts);
+
 
 </script>
 
@@ -40,14 +78,8 @@ const modules = [Navigation];
                 @slideChange="onSlideChange"
             >
                 <!-- editor's pick item -->
-                <swiper-slide>
-                    <BlogItemEditorPick/>
-                </swiper-slide>
-                <swiper-slide>
-                    <BlogItemEditorPick/>
-                </swiper-slide>
-                <swiper-slide>
-                    <BlogItemEditorPick/>
+                <swiper-slide v-for="post in posts">
+                    <BlogItemEditorPick :post="post"/>
                 </swiper-slide>
             </swiper>
         </section>
