@@ -48,8 +48,6 @@ const posts = [
     }
 ]
 
-console.log(posts);
-
 
 </script>
 
